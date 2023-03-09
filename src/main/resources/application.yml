@@ -1,0 +1,30 @@
+server:
+  port: ${SERVR_PORT:8081}
+spring:
+  application:
+    name: ${SERVICE_NAME:opc-da-driver-service}
+opc:
+  host: ${OPC_HOST:localhost}
+  prog-id: ${OPC_PROG_ID:NETxKNX.OPC.Server.3.5}
+  group-json: ${OPC_GROUP_JSON:groupdata.json}
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+log:
+  level: INFO
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+log:
+  level: INFO
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+log:
+  level: ERROR
